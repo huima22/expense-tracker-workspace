@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local database (section 3, step 4)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# Never commit real bank exports; only fake fixtures in tests/fixtures/
+*.csv
+*.xlsx
+*.pdf
+!tests/fixtures/*.csv
+!tests/fixtures/*.xlsx
+
+# Streamlit / editor
+.streamlit/secrets.toml
+.claude/settings.local.json

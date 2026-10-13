@@ -1,0 +1,15 @@
+Account Details For:,POSB Savings Account 000-00000-0
+Statement as at:,31 Oct 2026
+Available Balance:,"5,000.00"
+Ledger Balance:,"5,000.00"
+
+Transaction Date,Value Date,Reference,Transaction Ref1,Transaction Ref2,Transaction Ref3,Channel,Branch,Teller,Cheque No,Status,Description,Debit Amount,Credit Amount
+01 Oct 2026,01 Oct 2026,POS,,,,,,,,,NTUC FAIRPRICE BEDOK,64.25,
+03 Oct 2026,03 Oct 2026,POS,,,,,,,,,GRAB*FOOD 4821,23.50,
+05 Oct 2026,05 Oct 2026,POS,,,,,,,,,GRAB*TRANSPORT SG,18.40,
+08 Oct 2026,08 Oct 2026,POS,,,,,,,,,NETFLIX.COM,19.98,
+12 Oct 2026,12 Oct 2026,GIRO,,,,,,,,,SP SERVICES LTD,132.60,
+15 Oct 2026,15 Oct 2026,POS,,,,,,,,,TOAST BOX TAMPINES,7.80,
+20 Oct 2026,20 Oct 2026,ITR,,,,,,,,,FUND TRANSFER TO <YOUR NAME>,"1,500.00",
+22 Oct 2026,22 Oct 2026,POS,,,,,,,,,REFUND GRAB*TRANSPORT,,12.00
+

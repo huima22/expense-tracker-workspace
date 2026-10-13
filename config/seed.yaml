@@ -1,0 +1,36 @@
+# Starter data loaded by scripts/seed.py (DESIGN.md sections 6 and 7).
+# Re-running the seed is safe: categories and profiles are upserted by name,
+# rules by their condition (action, field, column, operator, pattern, profile).
+# Re-seeding resets seeded values you changed in the app (colours, priorities...).
+
+categories:
+  - {name: Food,          color: '#E8A33D', sort_order: 10}
+  - {name: Transport,     color: '#4C8BF5', sort_order: 20}
+  - {name: Groceries,     color: '#3FA66B', sort_order: 30}
+  - {name: Subscriptions, color: '#9B6BD6', sort_order: 40}
+  - {name: Utilities,     color: '#D9534F', sort_order: 50}
+
+profiles:
+  # Adjust after checking a real DBS export.
+  - name: DBS Savings CSV
+    file_type: csv
+    filename_pattern: '(?i)dbs.*\.csv$'
+    header_row: 6
+    header_signature: {A: Transaction Date, L: Description}
+    column_map: {date: A, description: L, debit: M, credit: N}
+    date_format: '%d %b %Y'
+    sign_rules:
+      - {priority: 1, target_field: column, column_ref: M, operator: not_empty, sign_result: expense}
+      - {priority: 2, target_field: column, column_ref: N, operator: not_empty, sign_result: income}
+
+# Global rules (add `profile: <name>` to limit one to a profile).
+# Categorise rules name their category; specific patterns get lower priority numbers.
+rules:
+  - {action: review, operator: contains, pattern: refund, priority: 1, note: Possible refund}
+  # Replace <YOUR NAME> with your name as it appears on transfers between your own accounts.
+  - {action: skip, operator: contains, pattern: '<YOUR NAME>', priority: 1, note: Own-account transfer}
+  - {action: categorise, category: Food,          operator: contains, pattern: 'grab*food',  priority: 10}
+  - {action: categorise, category: Transport,     operator: contains, pattern: grab,         priority: 20}
+  - {action: categorise, category: Groceries,     operator: contains, pattern: fairprice,    priority: 20}
+  - {action: categorise, category: Subscriptions, operator: contains, pattern: netflix,      priority: 20}
+  - {action: categorise, category: Utilities,     operator: contains, pattern: sp services,  priority: 20}
